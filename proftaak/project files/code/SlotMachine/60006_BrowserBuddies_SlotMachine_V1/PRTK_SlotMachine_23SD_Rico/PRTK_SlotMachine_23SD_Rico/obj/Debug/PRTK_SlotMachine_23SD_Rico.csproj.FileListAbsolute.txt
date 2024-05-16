@@ -1,0 +1,10 @@
+C:\Users\Storm\Documents\OneDrive - ROC Ter AA\School\Semester_4\New folder\PRTK_SlotMachine_23SD_Rico\PRTK_SlotMachine_23SD_Rico\bin\Debug\PRTK_SlotMachine_23SD_Rico.exe.config
+C:\Users\Storm\Documents\OneDrive - ROC Ter AA\School\Semester_4\New folder\PRTK_SlotMachine_23SD_Rico\PRTK_SlotMachine_23SD_Rico\bin\Debug\PRTK_SlotMachine_23SD_Rico.exe
+C:\Users\Storm\Documents\OneDrive - ROC Ter AA\School\Semester_4\New folder\PRTK_SlotMachine_23SD_Rico\PRTK_SlotMachine_23SD_Rico\bin\Debug\PRTK_SlotMachine_23SD_Rico.pdb
+C:\Users\Storm\Documents\OneDrive - ROC Ter AA\School\Semester_4\New folder\PRTK_SlotMachine_23SD_Rico\PRTK_SlotMachine_23SD_Rico\obj\Debug\PRTK_SlotMachine_23SD_Rico.csproj.AssemblyReference.cache
+C:\Users\Storm\Documents\OneDrive - ROC Ter AA\School\Semester_4\New folder\PRTK_SlotMachine_23SD_Rico\PRTK_SlotMachine_23SD_Rico\obj\Debug\PRTK_SlotMachine_23SD_Rico.Form1.resources
+C:\Users\Storm\Documents\OneDrive - ROC Ter AA\School\Semester_4\New folder\PRTK_SlotMachine_23SD_Rico\PRTK_SlotMachine_23SD_Rico\obj\Debug\PRTK_SlotMachine_23SD_Rico.Properties.Resources.resources
+C:\Users\Storm\Documents\OneDrive - ROC Ter AA\School\Semester_4\New folder\PRTK_SlotMachine_23SD_Rico\PRTK_SlotMachine_23SD_Rico\obj\Debug\PRTK_SlotMachine_23SD_Rico.csproj.GenerateResource.cache
+C:\Users\Storm\Documents\OneDrive - ROC Ter AA\School\Semester_4\New folder\PRTK_SlotMachine_23SD_Rico\PRTK_SlotMachine_23SD_Rico\obj\Debug\PRTK_SlotMachine_23SD_Rico.csproj.CoreCompileInputs.cache
+C:\Users\Storm\Documents\OneDrive - ROC Ter AA\School\Semester_4\New folder\PRTK_SlotMachine_23SD_Rico\PRTK_SlotMachine_23SD_Rico\obj\Debug\PRTK_SlotMachine_23SD_Rico.exe
+C:\Users\Storm\Documents\OneDrive - ROC Ter AA\School\Semester_4\New folder\PRTK_SlotMachine_23SD_Rico\PRTK_SlotMachine_23SD_Rico\obj\Debug\PRTK_SlotMachine_23SD_Rico.pdb
