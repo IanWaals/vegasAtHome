@@ -1,2 +1,2 @@
 # vegasAtHome
- 
+Ons project voor de proftaak word een website met een applicatie extensie. Wij willen een gok- en sportwedden website maken waar je op verschillende manieren je nepgeld kan gokken. De eerste manier is door geld in the zetten op je eigen fantasie sport league. Hierin kan je zelf je eigen team kiezen van de NBA (basketbal) NFL (amerikaans voetbal) of de MLB (honkbal) en je kan wedden op welke positie verschillende teams gaan behalen, wie er scoort en hoeveel. Je kan ook je nepgeld gokken op verschillende casino spellen. Roulette, blackjack, balletje-balletje en money wheel. Hiermee kan je chips verdienen die je later in de chips shop kan uitgeven. De chips shop is een c# applicatie waarin je ook nog een slot machine spel kan spelen.
