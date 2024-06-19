@@ -1,0 +1,235 @@
+if ($sport == "football") {
+        ?><h1>Pending bets</h1><?php
+        foreach ($nflGames as $nflGame) {
+            if ($nflGame['home_team'] == $team) {
+                $location = "VS";
+                $opponent = $nflGame['away_team'];
+            }
+            elseif ($nflGame['away_team'] == $team) {
+                $location = "@";
+                $opponent = $nflGame['home_team'];
+            }
+            else {
+                $location = "";
+            }
+
+            if ($location != "") {
+                ?>
+                <section class="pendingBets">
+                    <h2>For game: <?php echo $team . " " . $location . " " . $opponent; ?></h2>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Your parlay</th>
+                            <th>Bet</th>
+                        </tr>
+                        <tr>
+                            <?php
+                            if ($_SESSION['parlay1ou'] == "over" . $nflGame['home_team']) {
+                                $parlay1 = "Over";
+                            } 
+                            else {
+                                $parlay1 = "Under";
+                            }
+                            ?>
+                            <td>O/U for the <?php echo $nflGame['home_team']; ?></td>
+                            <td><?php echo $parlay1; ?></td>
+                            <td><?php echo $_SESSION['parlay1']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>For the victorious team of the game</td>
+                            <td><?php echo $_SESSION['winningTeam']; ?></td>
+                            <td><?php echo $_SESSION['parlay2']; ?></td>
+                        </tr>
+                        <tr>
+                            <?php
+                            if ($_SESSION['parlay3ou'] == "over" . $nflGame['away_team']) {
+                                $parlay3 = "Over";
+                            } 
+                            else {
+                                $parlay3 = "Under";
+                            }
+                            ?>
+                            <td>O/U for the <?php echo $nflGame['away_team']; ?></td>
+                            <td><?php echo $parlay3; ?></td>
+                            <td><?php echo $_SESSION['parlay3']; ?></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <button class="overviewButton" id="openModalButton"><b class="whiteOutline">Get bet results</b></button>
+                </section>
+                <div id="openModalDiv" class="modal">
+                    <section class="modal-content">
+                        <span class="close">&times;</span>
+                        <h1>Bet Results</h1>
+                        <section id="betResults">
+                            <?php
+                            foreach ($nflTeams as $nflTeam) {
+                                if ($team == $nflTeam['teamName']) {
+                                    ?>
+                                    <img src="images/team_logos/nfl/<?php echo $nflTeam['teamConference']; ?>/<?php echo $nflTeam['teamLogo']; ?>" alt="team image" width="150">
+                                    <?php
+                                }
+                            }
+                            ?>
+                            <p class="versus"><?php echo $location; ?></p>
+                            <?php
+                            foreach ($nflTeams as $nflTeam) {
+                                if ($opponent == $nflTeam['teamName']) {
+                                    ?>
+                                    <img src="images/team_logos/nfl/<?php echo $nflTeam['teamConference']; ?>/<?php echo $nflTeam['teamLogo']; ?>" alt="team image" width="150">
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </section>
+                        <?php 
+                        if ($location == "VS") {
+                            ?><h2><?php echo $nflGame['home_points'] . " - " . $nflGame['away_points'];?></h2><?php
+                        }
+                        else {
+                            ?><h2><?php echo $nflGame['away_points'] . " - " . $nflGame['home_points'];?></h2><?php
+                        }
+                        ?>
+                        <table>
+                        <tr>
+                            <th></th>
+                            <th>Your parlay</th>
+                            <th>Bet</th>
+                            <th>Payout</th>
+                        </tr>
+                        <tr>
+                            <?php
+                            if ($_SESSION['parlay1ou'] == "over" . $nflGame['home_team']) {
+                                $parlay1 = "Over";
+                            } 
+                            else {
+                                $parlay1 = "Under";
+                            }
+                            ?>
+                            <td>O/U for the <?php echo $nflGame['home_team']; ?></td>
+                            <td><?php echo $parlay1; ?></td>
+                            <td><?php echo $_SESSION['parlay1']; ?></td>
+                            <td>
+                                <?php
+                                switch ($parlay1) {
+                                    case "Over":
+                                        if ($nflGame['home_points'] >= 108) {
+                                            $_SESSION['parlay1'] *= 1.5;
+                                            $_SESSION['credits'] += $_SESSION['parlay1'];
+                                        }
+                                        else {
+                                            $_SESSION['parlay1'] = 0;
+                                        }
+                                        break;
+                                    case "Under":
+                                        if ($nflGame['home_points'] >= 108) {
+                                            $_SESSION['parlay1'] = 0;
+                                        }
+                                        else {
+                                            $_SESSION['parlay1'] *= 1.5;
+                                            $_SESSION['credits'] += $_SESSION['parlay1'];
+                                        }
+                                        break;
+                                }
+                                ?>
+                                <?php echo $_SESSION['parlay1']?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>For the victorious team of the game</td>
+                            <td><?php echo $_SESSION['winningTeam']; ?></td>
+                            <td><?php echo $_SESSION['parlay2']; ?></td>
+                            <td>
+                                <?php
+                                if ($_SESSION['winningTeam'] == $nflGame['winner']) {
+                                    $_SESSION['parlay2'] *= 1.5;
+                                    $_SESSION['credits'] += $_SESSION['parlay2'];
+                                } else {
+                                    $_SESSION['parlay2'] = 0;
+                                }
+                                ?>
+                                <?php echo $_SESSION['parlay2']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <?php
+                            if ($_SESSION['parlay3ou'] == "over" . $nflGame['away_team']) {
+                                $parlay3 = "Over";
+                            } 
+                            else {
+                                $parlay3 = "Under";
+                            }
+                            ?>
+                            <td>O/U for the <?php echo $nflGame['away_team']; ?></td>
+                            <td><?php echo $parlay3; ?></td>
+                            <td><?php echo $_SESSION['parlay3']; ?></td>
+                            <td>
+                                <?php
+                                switch ($parlay3) {
+                                    case "Over":
+                                        if ($nflGame['away_points'] >= 108) {
+                                            $_SESSION['parlay3'] *= 1.5;
+                                            $_SESSION['credits'] += $_SESSION['parlay3'];
+                                        }
+                                        else {
+                                            $_SESSION['parlay3'] = 0;
+                                        }
+                                        break;
+                                    case "Under":
+                                        if ($nflGame['away_points'] >= 108) {
+                                            $_SESSION['parlay3'] = 0;
+                                        }
+                                        else {
+                                            $_SESSION['parlay3'] *= 1.5;
+                                            $_SESSION['credits'] += $_SESSION['parlay3'];
+                                        }
+                                        break;
+                                }
+                                ?>
+                                <?php echo $_SESSION['parlay3']?>
+                            </td>
+                        </tr>
+                    </table>
+                    <?php
+                    $_SESSION['parlay1'] = 0;
+                    $_SESSION['parlay2'] = 0;
+                    $_SESSION['parlay3'] = 0;
+                    ?>
+                    </section>
+                    <br><br><br>
+                </div>
+                <br><br>
+                <script>
+                    // Get the modal
+                    var modal = document.getElementById("openModalDiv");
+
+                    // Get the button that opens the modal
+                    var btn = document.getElementById("openModalButton");
+
+                    // Get the <span> element that closes the modal
+                    var span = document.getElementsByClassName("close")[0];
+
+                    // When the user clicks on the button, open the modal
+                    btn.onclick = function() {
+                    modal.style.display = "block";
+                    }
+
+                    // When the user clicks on <span> (x), close the modal
+                    span.onclick = function() {
+                    modal.style.display = "none";
+                    location.reload();
+                    }
+
+                    // When the user clicks anywhere outside of the modal, close it
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                </script>
+                <?php
+                break;
+            }
+        }
+    }
